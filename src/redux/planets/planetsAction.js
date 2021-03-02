@@ -5,7 +5,7 @@ import {
 } from "./planetTypes";
 
 import axios from "axios";
-
+//Action Creators without side effects (pure functions)
 export const fetchPlanetsRequest = () => {
   return {
     type: FETCH_PLANETS_REQUEST,
@@ -26,6 +26,7 @@ export const fetchPlanetsFailure = (error) => {
   };
 };
 
+//Action Creator with side effects
 export const fetchPlanet = () => {
   return (dispatch) => {
     dispatch(fetchPlanetsRequest);

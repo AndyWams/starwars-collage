@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 import { fetchPeople } from "../../redux";
 import PeopleList from "./peopleList";
 
-function PeopleContainer({ peopleData, loadingData, fetchPeople }) {
+function PeopleContainer({ peopleData, getPeople }) {
   useEffect(() => {
-    fetchPeople();
-  }, [fetchPeople]);
+    getPeople();
+  }, [getPeople]);
   return (
     <div className="wrapper">
-      <PeopleList peopleData={peopleData} loading={loadingData} />
+      <PeopleList peopleData={peopleData} />
     </div>
   );
 }
@@ -17,13 +17,12 @@ function PeopleContainer({ peopleData, loadingData, fetchPeople }) {
 const mapStateToProps = (state) => {
   return {
     peopleData: state.peopleResults,
-    loadingData: state.peopleResults.loading,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchPeople: () => dispatch(fetchPeople()),
+    getPeople: () => dispatch(fetchPeople()),
   };
 };
 

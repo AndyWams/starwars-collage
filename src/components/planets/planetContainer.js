@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { fetchPlanet } from "../../redux/planets/planetsAction";
 import Planets from "./planets";
 
-function PlanetContainer({ planetData, loadingData, fetchPlanet }) {
+function PlanetContainer() {
+  const planetData = useSelector((state) => state.planetResults);
+  const loadingData = useSelector((state) => state.planetResults.loading);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    fetchPlanet();
-  }, [fetchPlanet]);
+    dispatch(fetchPlanet());
+  }, [dispatch]);
   return (
     <div className="wrapper">
       <Planets planetData={planetData} loading={loadingData} />
@@ -14,17 +18,4 @@ function PlanetContainer({ planetData, loadingData, fetchPlanet }) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    planetData: state.planetResults,
-    loadingData: state.planetResults.loading,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchPlanet: () => dispatch(fetchPlanet()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PlanetContainer);
+export default PlanetContainer;
