@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.scss";
+import PeopleContainer from "./components/people/peopleContainer";
+import store from "./redux/store";
+import { Provider } from "react-redux";
+import Header from "./components/header/header";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import PlanetContainer from "./components/planets/planetContainer";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <div className="App container">
+          <Header />
+          <Route path="/" exact render={() => <PeopleContainer />} />
+          <Route path="/planets" exact render={() => <PlanetContainer />} />
+        </div>
+      </Router>
+    </Provider>
   );
 }
 

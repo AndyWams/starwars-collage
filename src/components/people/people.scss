@@ -1,0 +1,102 @@
+.wrapper {
+  padding: 4em 0em 2em;
+  .error__ {
+    display: flex;
+    justify-content: center;
+    h2 {
+      font-size: 14px;
+      letter-spacing: 5px;
+      font-family: "Montserrat", sans-serif;
+    }
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 23.6%);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  .card {
+    width: -webkit-fill-available;
+    height: auto;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 0 1px #3030308a;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955),
+      box-shadow 0.3s ease,
+      -webkit-transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    &.h__400 {
+      height: 400px;
+    }
+    .avatar {
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      background-size: cover !important;
+      width: 200px;
+      height: -webkit-fill-available;
+      margin: 0 auto;
+    }
+    .title__header {
+      padding: 2em 1em 0em;
+      h2 {
+        font-size: 20px;
+        margin: 0;
+      }
+    }
+    .card__profile {
+      background: #c8e6c9;
+      width: auto;
+      padding: 2em 1.5em;
+      p {
+        font-size: 15px;
+        font-weight: bold;
+        font-family: "Montserrat", sans-serif;
+        span {
+          display: block;
+          font-size: 12px;
+          color: #fff;
+        }
+      }
+    }
+    .description {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-row-gap: 10px;
+      padding: 1em;
+      .item {
+        border-bottom: 0.5px solid #ccc;
+        label {
+          font-weight: bold;
+        }
+        p {
+          font-size: 12px;
+        }
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+    &:hover {
+      transform: scale(1.04);
+      transition: transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955),
+        box-shadow 0.3s ease,
+        -webkit-transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+      box-shadow: 0 10px 40px #00000033;
+    }
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    grid-template-columns: repeat(2, 47%);
+
+    .card {
+      img {
+        height: 160px !important;
+      }
+      .card__profile p {
+        font-size: 11px;
+      }
+    }
+  }
+}
